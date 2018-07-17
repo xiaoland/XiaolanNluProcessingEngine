@@ -15,7 +15,6 @@ class XiaolanNlu(Base):
     def __init__(self):
 
         super(XiaolanNlu, self).__init__()
-        self.intentlist = intentlist.intentlistturn()
         self.turn = 0
 
     def Input(self, mode ,data):
