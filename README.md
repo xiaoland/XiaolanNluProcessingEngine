@@ -9,7 +9,7 @@
 ## 使用方法：
 - 调用Nlu.py文件中XiaolanIntent类里的Input函数，参数有：1、语义理解模式（1、IntentDo（小蓝）;2、IflyIntentDo（讯飞）2、用户输入的文本
 - 小蓝语义理解引擎需要一个意图列表（格式详见下面）用于为专门的机器人定制不同的体验
-- 小蓝语义理解引擎的意图列表填写在intentlist.py里的intentlistturn函数里的turnback变量里
+- 小蓝语义理解引擎的意图列表填写在Base.py里的Base类里的__init__函数里的intentlist变量里
 
 ## 小蓝语义理解引擎意图列表：
 - 意图列表格式： （格式为python里的list）
