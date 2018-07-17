@@ -18,12 +18,12 @@ class XiaolanNlu(Base):
         self.intentlist = intentlist.intentlistturn()
         self.turn = 0
 
-    def Input(self, mode ,data):
+    def Input(self, mode ,text):
 
         if mode == 'IntentDo':
-            self.xl_intent(data['Text'])
+            self.xl_intent(text)
         elif mode == 'IflyIntentDo':
-            self.ifly_intent(data['text'])
+            self.ifly_intent(text)
 
     def ifly_intent(self, text):
 

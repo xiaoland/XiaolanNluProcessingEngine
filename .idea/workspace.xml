@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Nlu.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Nlu.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Nlu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="17" column="53" lean-forward="true" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
+            <state relative-caret-position="-1406">
+              <caret line="24" column="36" lean-forward="true" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
               <folding>
                 <element signature="e#26#37#0" expanded="true" />
               </folding>
@@ -23,11 +23,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="intentlist.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="intentlist.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/intentlist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="49" column="49" selection-start-line="49" selection-start-column="49" selection-end-line="49" selection-end-column="49" />
+            <state relative-caret-position="741">
+              <caret line="39" column="46" lean-forward="true" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
               <folding>
                 <element signature="e#25#35#0" expanded="true" />
               </folding>
@@ -162,22 +162,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/intentlist.py">
+    <entry file="file://$PROJECT_DIR$/Nlu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="49" column="49" selection-start-line="49" selection-start-column="49" selection-end-line="49" selection-end-column="49" />
+        <state relative-caret-position="-1406">
+          <caret line="24" column="36" lean-forward="true" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
           <folding>
-            <element signature="e#25#35#0" expanded="true" />
+            <element signature="e#26#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Nlu.py">
+    <entry file="file://$PROJECT_DIR$/intentlist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="17" column="53" lean-forward="true" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
+        <state relative-caret-position="741">
+          <caret line="39" column="46" lean-forward="true" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
           <folding>
-            <element signature="e#26#37#0" expanded="true" />
+            <element signature="e#25#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
