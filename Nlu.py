@@ -17,8 +17,14 @@ class XiaolanNlu(Base):
         super(XiaolanNlu, self).__init__()
         self.turn = 0
 
-    def Input(self, mode ,text):
+    def Input(self, mode, text):
 
+        """
+        入口
+        :param mode: 处理模式
+        :param text: 用户输入文本
+        :return:
+        """
         if mode == 'IntentDo':
             self.xl_intent(text)
         elif mode == 'IflyIntentDo':
@@ -26,6 +32,11 @@ class XiaolanNlu(Base):
 
     def ifly_intent(self, text):
 
+            """
+            讯飞语义理解引擎
+            :param text: 用户输入文本
+            :return:
+            """
             appid = '5ace1bbb'
             apikey = '9e1b8f6028b14b969cdec166eca127ea'
             curtimeo = int(time.time())
@@ -110,6 +121,12 @@ class XiaolanNlu(Base):
 
     def get_slots(self, slotslist, text):
 
+            """
+            小蓝语义理解引擎槽位识别
+            :param slotslist: 槽位列表
+            :param text: 用户输入文本
+            :return:
+            """
             returndict = {}
             a = 1
             b = 1
@@ -135,6 +152,11 @@ class XiaolanNlu(Base):
 
     def xl_intent(self, text):
 
+            """
+            小蓝语义理解引擎
+            :param text: 用户输入文本
+            :return:
+            """
             b = 0
             a = 0
             c = 0
