@@ -7,7 +7,6 @@ import time
 import base64
 import hashlib
 import requests
-import intentlist
 from Base import Base
 
 class XiaolanNlu(Base):
@@ -17,28 +16,169 @@ class XiaolanNlu(Base):
         super(XiaolanNlu, self).__init__()
         self.turn = 0
 
-    def Input(self, mode, text):
+    def start(self, text):
 
         """
-        入口
-        :param mode: 处理模式
-        :param text: 用户输入文本
+        小蓝语义理解引擎
         :return:
         """
-        if mode == 'IntentDo':
-            self.xl_intent(text)
-        elif mode == 'IflyIntentDo':
-            self.ifly_intent(text)
 
-    def ifly_intent(self, text):
+        wordlexer = self.XiaolanNlp.BaiduWordLexicalAnalysis(text)
+        wordlexer = self.WordTypeOut(wordlexer)
+        a = 0;b = 0;c = 0
+        for pos in self.pos:
+
+            if self.XiaolanNlp.BaiduTextLikeInfo(text, self.intentlist[a][2][b]['text'][c]) > 0.5:
+                if self.XiaolanNlp.BaiduWordLikeInfo(wordlexer['n'], self.intentlist[a][2][b]['n'][c]) > 0.5 or self.XiaolanNlp.BaiduWordLikeInfo(wordlexer['v'], self.intentlist[a][2][b]['v']) > 0.5:
+                    IntentInfo = {
+                        'MainIntent': self.intentlist[a][0],
+                        'Intent': self.intentlist[a][1][b],
+                        'Skill': self.intentlist[a][-1],
+                        'Slots': self.get_slots(self.intentlist[a][3][b], text)
+                    }
+                    break
+                else:
+                    pass
+            else:
+                c = c + 1
+                if c > len(self.intentlist[a][2][b]['text']) or c > len(self.intentlist[a][2][b]['n']):
+                    c = 0
+                    b = b + 1
+                    if b > len(self.intentlist[a][2]):
+                        a = a + 1
+                        b = 0
+                        c = 0
+                        if a > len(self.intentlist):
+                            break
+                        else:
+                            pass
+                    else:
+                        pass
+                else:
+                    pass
+
+
+    def get_slots(self, slotslist, text):
+
+            """
+            小蓝语义理解引擎槽位识别
+            :param slotslist: 槽位列表
+            :param text: 用户输入文本
+            :return:
+            """
+            slotname = []
+            slotvalue = []
+            a = 1
+            b = 1
+            if len(slotslist) != None or slotslist != []:
+                while self.turn == 0:
+                    try:
+                        var = slotslist[a]
+                    except IndexError:
+                        break
+                    else:
+                        if var['dict'][b] in text or var['same_means'][b] in text:
+                            slotname.append(slotslist[a - 1])
+                            slotvalue.append(var['dict'][b])
+                        if len(var['dict']) == b:
+                            a = a + 2
+                            b = 0
+                        else:
+                            b = b + 1
+            else:
+                print('slots read error')
+                return {}
+            return {
+                'SlotName': slotname,
+                'SlotValue': slotvalue
+            }
+
+    def WordTypeOut(self, lists):
+
+            """
+            将type与word重新组合
+            :param lists: 处理列表
+            :return:
+            """
+            b = 1
+            v = [];f = [];m = [];a = [];ns = [];s = [];nr = [];nt = [];d = [];p = [];q = [];r = [];w = [];u = [];c = [];n = []
+            while 1 == 1:
+
+                if lists[b] == 'n':
+                    n.append(lists[b - 1])
+                elif lists[b] == 'v':
+                    v.append(lists[b - 1])
+                elif lists[b] == 'f':
+                    f.append(lists[b - 1])
+                elif lists[b] == 'm':
+                    m.append(lists[b - 1])
+                elif lists[b] == 'a':
+                    a.append(lists[b - 1])
+                elif lists[b] == 'ns':
+                    ns.append(lists[b - 1])
+                elif lists[b] == 's':
+                    s.append(lists[b - 1])
+                elif lists[b] == 'nr':
+                    nr.append(lists[b - 1])
+                elif lists[b] == 'nt':
+                    nt.append(lists[b - 1])
+                elif lists[b] == 'd':
+                    d.append(lists[b - 1])
+                elif lists[b] == 'p':
+                    p.append(lists[b - 1])
+                elif lists[b] == 'q':
+                    q.append(lists[b - 1])
+                elif lists[b] == 'r':
+                    r.append(lists[b - 1])
+                elif lists[b] == 'w':
+                    w.append(lists[b - 1])
+                elif lists[b] == 'u':
+                    u.append(lists[b - 1])
+                elif lists[b] == 'c':
+                    c.append(lists[b - 1])
+                else:
+                    b = b + 2
+                    try:
+                        test = lists[b]
+                    except:
+                        break
+            return {
+                'u': u,
+                'm': m,
+                'n': n,
+                'v': v,
+                'f': f,
+                'm': m,
+                'a': a,
+                'ns': ns,
+                's': s,
+                'nr': nr,
+                'nt': nt,
+                'd': d,
+                'p': p,
+                'q': q,
+                'r': r,
+                'w': w,
+                'c': c
+            }
+
+
+
+
+
+class IflyNlu(Base):
+
+    def __init__(self, text):
+
+        super(IflyNlu, self).__init__()
+
+    def start(self, text):
 
             """
             讯飞语义理解引擎
             :param text: 用户输入文本
             :return:
             """
-            appid = '5ace1bbb'
-            apikey = '9e1b8f6028b14b969cdec166eca127ea'
             curtimeo = int(time.time())
             curtimef = str(curtimeo)
 
@@ -56,13 +196,13 @@ class XiaolanNlu(Base):
                     ]
                 }
 
-            csumc = apikey + curtimef + 'eyJ1c2VyaWQiOiIxMyIsInNjZW5lIjoibWFpbiJ9' + 'text=' + textl
+            csumc = self.iflyapikey + curtimef + 'eyJ1c2VyaWQiOiIxMyIsInNjZW5lIjoibWFpbiJ9' + 'text=' + textl
 
             c = hashlib.md5()
             c.update(csumc)
             checksuml = c.hexdigest()
 
-            headers = {'X-Appid': appid, 'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+            headers = {'X-Appid': self.iflyappid, 'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
                        'X-CurTime': curtimef, 'X-Param': 'eyJ1c2VyaWQiOiIxMyIsInNjZW5lIjoibWFpbiJ9',
                        'X-CheckSum': checksuml}
             url = 'http://api.xfyun.cn/v1/aiui/v1/text_semantic?text=' + textl
@@ -119,95 +259,5 @@ class XiaolanNlu(Base):
                         ]
                     }
 
-    def get_slots(self, slotslist, text):
-
-            """
-            小蓝语义理解引擎槽位识别
-            :param slotslist: 槽位列表
-            :param text: 用户输入文本
-            :return:
-            """
-            returndict = {}
-            a = 1
-            b = 1
-            if len(slotslist) != None or slotslist != []:
-                while self.turn == 0:
-                    try:
-                        var = slotslist[a]
-                    except IndexError:
-                        break
-                    else:
-                        if var['dict'][b] in text or var['same_means'][b] in text:
-                            returndict['slotname'] = slotslist[a - 1]
-                            returndict['value'] = var['dict'][b]
-                        if len(var['dict']) == b:
-                            a = a + 2
-                            b = 0
-                        else:
-                            b = b + 1
-            else:
-                print('slots read error')
-                return returndict
-            return returndict
-
-    def xl_intent(self, text):
-
-            """
-            小蓝语义理解引擎
-            :param text: 用户输入文本
-            :return:
-            """
-            b = 0
-            a = 0
-            c = 0
-            data = {}
-            if self.turn == 0:
-                while self.turn == 0:
-                    try:
-                        var = [a][1]
-                    except IndexError:
-                        data = None
-                        break
-                    else:
-                        pass
-                    if var[b][c] in text:
-                        slots = self.get_slots(self.intentlist[a][2], text)
-                        data = {
-                            'intent': self.intentlist[a][0][b],
-                            'skill': self.intentlist[a][3],
-                            'slots': slots,
-                            'commands': [
-                                'skill', 'start'
-                            ],
-                            'states': [
-                                'xiaolan_nlu_intent_back'
-                            ]
-                        }
-                        if len(var[b]) == c:
-                            b = b + 1
-                            c = 0
-                        elif len(var) == b:
-                            a = a + 1
-                            b = 0
-                            c = 0
-                        elif len(self.intentlist) == a:
-                            return data
-                        else:
-                            c = c + 1
-
-                if data == None:
-                    return {
-                        'intent': self.ifly_intent(text),
-                        'skill': self.ifly_intent(text),
-                        'slots': None,
-                        'commands': [
-                            'skill', 'start'
-                        ],
-                        'states': [
-                            'ifly_nlu_intent_back'
-                        ]
-                    }
-                else:
-                    return data
 
 
