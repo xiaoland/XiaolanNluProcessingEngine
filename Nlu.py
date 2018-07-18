@@ -1,8 +1,6 @@
 # -*- encoding=utf-8 -*-
 
 import json
-import os
-import sys
 import time
 import base64
 import hashlib
@@ -68,17 +66,17 @@ class XiaolanNlu(Base):
             """
             slotname = []
             slotvalue = []
-            a = 1
-            b = 1
+            a = 0
+            b = 0
             if len(slotslist) != None or slotslist != []:
                 while self.turn == 0:
                     try:
-                        var = slotslist[a]
+                        var = slotslist[a][1]
                     except IndexError:
                         break
                     else:
                         if var['dict'][b] in text or var['same_means'][b] in text:
-                            slotname.append(slotslist[a - 1])
+                            slotname.append(slotslist[a][0])
                             slotvalue.append(var['dict'][b])
                         if len(var['dict']) == b:
                             a = a + 2
