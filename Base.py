@@ -3,6 +3,8 @@
 import json
 import os
 import sys
+import time
+import logging
 from Nlp import XiaolanNlp
 from Nlu import XiaolanNlu
 
@@ -71,7 +73,7 @@ def application(environ, start_response):
 
         body = body_str.encode('utf-8')
 
-        print body
+        print(body)
 
         response_headers = [('Content-Type', 'application/json'),
                             ('Content-Length', str(len(body)))]
