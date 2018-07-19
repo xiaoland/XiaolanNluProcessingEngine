@@ -188,3 +188,25 @@ class XiaolanNlp(Base):
 
         if json['item']['score'] > 0.5:
             return json['item']['correct_query']
+        else:
+            return text
+
+    def BaiduKeyWordGet(self, text):
+
+        """
+        百度关键字提取
+        :param text: 用户输入文本
+        :return:
+        """
+        url = 'https://aip.baidubce.com/rpc/2.0/nlp/v1/keyword?access_token=' + self.token
+
+        body = {
+            'title': text.decode('UTF-8').encode('GBK'),
+            'content': text.decode('UTF-8').encode('GBK')
+        }
+
+        r = requests.post(url,
+                          body = body,
+                          headers = {'Content-Type': 'application/json'})
+
+        return r.json()['items']

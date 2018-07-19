@@ -38,6 +38,8 @@ class XiaolanNlu(Base):
                         'Intent': self.intentlist[a][1][b],
                         'Skill': self.intentlist[a][-1],
                         'Slots': self.get_slots(self.intentlist[a][3][b], text),
+                        'WordLexer': wordlexer,
+                        'KeyWord': self.XiaolanNlp.BaiduKeyWordGet(text),
                         'Text': text
                     }
                     break
