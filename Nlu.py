@@ -5,6 +5,8 @@ import time
 import base64
 import hashlib
 import requests
+import urllib
+import urllib2
 from Base import Base
 
 class XiaolanNlu(Base):
