@@ -22,6 +22,7 @@ class XiaolanNlu(Base):
         小蓝语义理解引擎
         :return:
         """
+        IntentInfo = {}
         text = self.XiaolanNlp.BaiduTextErrorFix(text)
         wordlexer = self.XiaolanNlp.BaiduWordLexicalAnalysis(text)
         wordlexer = self.WordTypeOut(wordlexer)
@@ -36,7 +37,8 @@ class XiaolanNlu(Base):
                         'MainIntent': self.intentlist[a][0],
                         'Intent': self.intentlist[a][1][b],
                         'Skill': self.intentlist[a][-1],
-                        'Slots': self.get_slots(self.intentlist[a][3][b], text)
+                        'Slots': self.get_slots(self.intentlist[a][3][b], text),
+                        'Text': text
                     }
                     break
                 else:
@@ -58,6 +60,16 @@ class XiaolanNlu(Base):
                         pass
                 else:
                     pass
+            if IntentInfo == {} or IntentInfo == '':
+                return {
+                    'MainIntent': 'tuling',
+                    'Intent': 'tuling',
+                    'Skill': 'tuling',
+                    'Slots': None,
+                    'Text': text
+                }
+            else:
+                return IntentInfo
 
 
     def get_slots(self, slotslist, text):
