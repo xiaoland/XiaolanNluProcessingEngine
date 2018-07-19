@@ -22,9 +22,11 @@ class XiaolanNlu(Base):
         小蓝语义理解引擎
         :return:
         """
-
+        text = self.XiaolanNlp.BaiduTextErrorFix(text)
         wordlexer = self.XiaolanNlp.BaiduWordLexicalAnalysis(text)
         wordlexer = self.WordTypeOut(wordlexer)
+        self.addLog('FixText' + text, 'info')
+        self.addLog('wordlexer' + wordlexer, 'info')
         a = 0;b = 0;c = 0
         for pos in self.pos:
 

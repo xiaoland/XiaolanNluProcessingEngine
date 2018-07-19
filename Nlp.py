@@ -79,11 +79,17 @@ class XiaolanNlp(Base):
 
     def BaiduTextLikeInfo(self, text_1, text_2):
 
+        """
+        百度短文本相似度分析
+        :param text_1: 分析文本1
+        :param text_2: 分析文本2
+        :return:
+        """
         url = 'https://aip.baidubce.com/rpc/2.0/nlp/v2/simnet?access_token=' + self.token
 
         body = {
-            'text_1': text_1,
-            'text_2': text_2
+            'text_1': text_1.decode('UTF-8').encode('GBK'),
+            'text_2': text_2.decode('UTF-8').encode('GBK')
         }
 
         r = requests.post(url,
@@ -99,11 +105,17 @@ class XiaolanNlp(Base):
 
     def BaiduWordLikeInfo(self, word_1, word_2):
 
+        """
+        百度词语相似度分析
+        :param word_1: 分析词语1
+        :param word_2: 分析词语2
+        :return:
+        """
         url = 'https://aip.baidubce.com/rpc/2.0/nlp/v2/word_emb_sim?access_token=' + self.token
 
         body = {
-            'word_1': word_1,
-            'word_2': word_2
+            'word_1': word_1.decode('UTF-8').encode('GBK'),
+            'word_2': word_2.decode('UTF-8').encode('GBK')
         }
 
         r = requests.post(url,
@@ -120,10 +132,15 @@ class XiaolanNlp(Base):
 
     def BaiduTextDepparser(self, text):
 
+        """
+        百度依存词法分析
+        :param text: 用户输入文本
+        :return:
+        """
         url = 'https://aip.baidubce.com/rpc/2.0/nlp/v1/depparser?access_token=' + self.token
 
         body = {
-            "text": text,
+            "text": text.decode('UTF-8').encode('GBK'),
             "mode": 1
         }
 
@@ -149,3 +166,25 @@ class XiaolanNlp(Base):
                 a = a + 1
 
         return trunlist
+
+    def BaiduTextErrorFix(self, text):
+
+        """
+        百度文本纠错
+        :param text: 用户输入文本
+        :return:
+        """
+        url = 'https://aip.baidubce.com/rpc/2.0/nlp/v1/ecnet?access_token=' + self.token
+
+        body = {
+            'text': text
+        }
+
+        r = requests.post(url,
+                          body = body,
+                          headers = {'Content-Type': 'application/json'})
+
+        json = r.json()
+
+        if json['item']['score'] > 0.5:
+            return json['item']['correct_query']
