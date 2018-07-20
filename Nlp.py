@@ -2,8 +2,6 @@
 
 import json
 import requests
-import os
-import sys
 
 from Base import Base
 
@@ -185,7 +183,7 @@ class XiaolanNlp(Base):
                           headers = {'Content-Type': 'application/json'})
 
         json = r.json()
-
+        print(json)
         if json['item']['score'] > 0.5:
             return json['item']['correct_query']
         else:
@@ -210,3 +208,4 @@ class XiaolanNlp(Base):
                           headers = {'Content-Type': 'application/json'})
 
         return r.json()['items']
+
