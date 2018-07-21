@@ -32,7 +32,7 @@ class XiaolanNlu(Base):
         for pos in self.pos:
 
             if self.XiaolanNlp.BaiduTextLikeInfo(text, self.intentlist[a][2][b]['text'][c]) > 0.5:
-                if self.XiaolanNlp.BaiduWordLikeInfo(wordlexer['n'], self.intentlist[a][2][b]['n'][c]) > 0.5 and self.XiaolanNlp.BaiduWordLikeInfo(wordlexer['v'], self.intentlist[a][2][b]['v']) > 0.5:
+                if self.XiaolanNlp.BaiduWordLikeInfo(wordlexer['n'], self.intentlist[a][2][b]['n'][c]) >= 0.48 and self.XiaolanNlp.BaiduWordLikeInfo(wordlexer['v'], self.intentlist[a][2][b]['v']) > 0.48:
                     IntentInfo = {
                         'MainIntent': self.intentlist[a][0],
                         'Intent': self.intentlist[a][1][b],
