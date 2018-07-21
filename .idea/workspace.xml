@@ -15,7 +15,7 @@
         <entry file="file://$PROJECT_DIR$/Nlu.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="201">
-              <caret line="34" column="202" selection-start-line="34" selection-start-column="202" selection-end-line="34" selection-end-column="202" />
+              <caret line="34" column="195" lean-forward="true" selection-start-line="34" selection-start-column="195" selection-end-line="34" selection-end-column="195" />
               <folding>
                 <element signature="e#26#37#0" expanded="true" />
               </folding>
@@ -109,7 +109,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="width" value="699" />
     <option name="height" value="775" />
   </component>
@@ -186,7 +186,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
@@ -302,7 +302,7 @@
     <entry file="file://$PROJECT_DIR$/Nlu.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
-          <caret line="34" column="202" selection-start-line="34" selection-start-column="202" selection-end-line="34" selection-end-column="202" />
+          <caret line="34" column="195" lean-forward="true" selection-start-line="34" selection-start-column="195" selection-end-line="34" selection-end-column="195" />
           <folding>
             <element signature="e#26#37#0" expanded="true" />
           </folding>
