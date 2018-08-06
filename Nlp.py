@@ -9,7 +9,7 @@ class XiaolanNlp(Base):
 
     def __init__(self):
 
-        super(XiaolanNlp, self).__init__(self)
+        super(XiaolanNlp, self).__init__()
         self.AK = 'TSFp0BKH547h7Agjf2WkV2Ll'
         self.SK = 'c9RZ1ZLxPe6wQVWOUwjaWOLvM7EpXHwe'
         self.token = self.get_token()

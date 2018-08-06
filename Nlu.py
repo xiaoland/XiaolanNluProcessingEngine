@@ -8,12 +8,14 @@ import requests
 import urllib
 import urllib2
 from Base import Base
+from Nlp import XiaolanNlp
 
 class XiaolanNlu(Base):
 
     def __init__(self):
 
         super(XiaolanNlu, self).__init__()
+        self.XiaolanNlp = XiaolanNlp()
         self.turn = 0
 
     def start(self, text):

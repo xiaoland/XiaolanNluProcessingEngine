@@ -5,18 +5,18 @@ import os
 import sys
 import time
 import logging
-from Nlp import XiaolanNlp
-from Nlu import XiaolanNlu
+
+
 
 class Base(object):
 
     def __init__(self):
 
-        self.intentlist = []
+
         self.pos = ['u', 'n', 'f', 'm', 'ns', 'nt', 'p', 'r', 'w', 'q', 'r', 's', 'a', 'nr']
         self.iflyappid = '5ace1bbb'
         self.iflyapikey = '9e1b8f6028b14b969cdec166eca127ea'
-        self.XiaolanNlp = XiaolanNlp()
+
 
     def addLog(self, log, level):
 
@@ -44,7 +44,7 @@ class Base(object):
 
 def application(environ, start_response):
 
-
+    from Nlu import XiaolanNlu
     method = environ.get('REQUEST_METHOD', 'HEAD')
     if method == "HEAD":
         response_headers = [('Content-Type', 'application/json'),
