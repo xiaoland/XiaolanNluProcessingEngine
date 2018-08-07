@@ -45,7 +45,7 @@ class XiaolanNlp(Base):
         :param text: 用户输入文本
         :return:
         """
-        url = 'https://aip.baidubce.com/rpc/2.0/nlp/v1/lexer?access_token=' + self.token
+        url = 'https://aip.baidubce.com/rpc/2.0/nlp/v1/lexer?charset=UTF-8&access_token=' + self.token
 
         body = {
             "text": text.decode('UTF-8').encode('GBK')
@@ -84,7 +84,7 @@ class XiaolanNlp(Base):
         :param text_2: 分析文本2
         :return:
         """
-        url = 'https://aip.baidubce.com/rpc/2.0/nlp/v2/simnet?access_token=' + self.token
+        url = 'https://aip.baidubce.com/rpc/2.0/nlp/v2/simnet?charset=UTF-8&access_token=' + self.token
 
         body = {
             'text_1': text_1.decode('UTF-8').encode('GBK'),
@@ -110,7 +110,7 @@ class XiaolanNlp(Base):
         :param word_2: 分析词语2
         :return:
         """
-        url = 'https://aip.baidubce.com/rpc/2.0/nlp/v2/word_emb_sim?access_token=' + self.token
+        url = 'https://aip.baidubce.com/rpc/2.0/nlp/v2/word_emb_sim?charset=UTF-8&access_token=' + self.token
 
         body = {
             'word_1': word_1.decode('UTF-8').encode('GBK'),
@@ -136,7 +136,7 @@ class XiaolanNlp(Base):
         :param text: 用户输入文本
         :return:
         """
-        url = 'https://aip.baidubce.com/rpc/2.0/nlp/v1/depparser?access_token=' + self.token
+        url = 'https://aip.baidubce.com/rpc/2.0/nlp/v1/depparser?charset=UTF-8&access_token=' + self.token
 
         body = {
             "text": text.decode('UTF-8').encode('GBK'),
@@ -173,7 +173,7 @@ class XiaolanNlp(Base):
         :param text: 用户输入文本
         :return:
         """
-        url = 'https://aip.baidubce.com/rpc/2.0/nlp/v1/ecnet?access_token=' + self.token
+        url = 'https://aip.baidubce.com/rpc/2.0/nlp/v1/ecnet?charset=UTF-8&access_token=' + self.token
 
         body = {
             'text': text
@@ -197,7 +197,7 @@ class XiaolanNlp(Base):
         :param text: 用户输入文本
         :return:
         """
-        url = 'https://aip.baidubce.com/rpc/2.0/nlp/v1/keyword?access_token=' + self.token
+        url = 'https://aip.baidubce.com/rpc/2.0/nlp/v1/keyword?charset=UTF-8&access_token=' + self.token
 
         body = {
             'title': text.decode('UTF-8').encode('GBK'),
