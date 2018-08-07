@@ -178,7 +178,7 @@ class XiaolanNlp(Base):
         body = {
             'text': text
         }
-
+        body = json.dumps(body)
         r = requests.post(url,
                           data = body,
                           headers = {'Content-Type': 'application/json'})
