@@ -183,10 +183,10 @@ class XiaolanNlp(Base):
                           data = body,
                           headers = {'Content-Type': 'application/json'})
 
-        json = r.json()
-        print(json)
+        result = r.json()
+        print(result)
         if json['item']['score'] > 0.5:
-            return json['item']['correct_query']
+            return result['item']['correct_query']
         else:
             return text
 
