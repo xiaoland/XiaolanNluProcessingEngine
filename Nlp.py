@@ -2,6 +2,7 @@
 
 import json
 import requests
+import urllib
 
 from Base import Base
 
@@ -51,7 +52,7 @@ class XiaolanNlp(Base):
         }
 
         r = requests.post(url,
-                          body = body,
+                          data = body,
                           headers = {'Content-Type': '	application/json'})
 
         json = r.json()
@@ -91,7 +92,7 @@ class XiaolanNlp(Base):
         }
 
         r = requests.post(url,
-                          body = body,
+                          data = body,
                           headers = {'Content-Type':	'application/json'})
 
         json = r.json()
@@ -117,7 +118,7 @@ class XiaolanNlp(Base):
         }
 
         r = requests.post(url,
-                          body = body,
+                          data = body,
                           headers = {'Content-Type': 'application/json'})
 
 
@@ -143,7 +144,7 @@ class XiaolanNlp(Base):
         }
 
         r = requests.post(url,
-                          body = body,
+                          data = body,
                           headers = {'Content-Type': 'application/json'})
 
         json = r.json()
@@ -179,7 +180,7 @@ class XiaolanNlp(Base):
         }
 
         r = requests.post(url,
-                          body = body,
+                          data = body,
                           headers = {'Content-Type': 'application/json'})
 
         json = r.json()
@@ -204,7 +205,7 @@ class XiaolanNlp(Base):
         }
 
         r = requests.post(url,
-                          body = body,
+                          data = body,
                           headers = {'Content-Type': 'application/json'})
 
         return r.json()['items']

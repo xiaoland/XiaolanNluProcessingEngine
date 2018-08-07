@@ -23,7 +23,7 @@ class Base(object):
         logger.setLevel(logging.DEBUG)
         rq = time.strftime('%Y%m%d%H%M', time.localtime(time.time()))
         log_path = os.path.dirname(os.getcwd()) + './'
-        log_name = log_path + 'XiaolanNlu' + '.log'
+        log_name = log_path + 'xiaolan' + '.log'
         logfile = log_name
         fh = logging.FileHandler(logfile, mode='w')
         fh.setLevel(logging.DEBUG)
@@ -60,6 +60,7 @@ def application(environ, start_response):
         if not request_body:
             return ['未获取到请求数据']
 
+        request_body = json.loads(request_body)
 
         b = Base()
         b.addLog('TimeStamp' + request_body['ClientEvent']['Header']['TimeStamp'], "info")
