@@ -30,8 +30,11 @@ class XiaolanNlu(Base):
         wordlexer = self.WordTypeOut(wordlexer)
         # self.addLog('FixText' + text, 'info')
         # self.addLog('wordlexer' + wordlexer, 'info')
-        a = 0;b = 0;c = 0
-        for pos in self.pos:
+        a = 0
+        b = 0
+        c = 0
+        pos = self.pos
+        while 1 == 1:
 
             if self.XiaolanNlp.BaiduTextLikeInfo(text, self.intentlist[a][2][b]['text'][c]) > 0.5:
                 if self.XiaolanNlp.BaiduWordLikeInfo(wordlexer['n'], self.intentlist[a][2][b]['n'][c]) >= 0.48 and self.XiaolanNlp.BaiduWordLikeInfo(wordlexer['v'], self.intentlist[a][2][b]['v']) > 0.48:
@@ -75,7 +78,8 @@ class XiaolanNlu(Base):
                     'Text': text
                 }
             else:
-                return IntentInfo
+                pass
+        return IntentInfo
 
 
     def get_slots(self, slotslist, text):
@@ -168,7 +172,6 @@ class XiaolanNlu(Base):
                 'n': n,
                 'v': v,
                 'f': f,
-                'm': m,
                 'a': a,
                 'ns': ns,
                 's': s,

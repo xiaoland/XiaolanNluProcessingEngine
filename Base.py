@@ -62,10 +62,10 @@ def application(environ, start_response):
 
         request_body = json.loads(request_body)
 
-        b = Base()
-        b.addLog('TimeStamp' + request_body['ClientEvent']['Header']['TimeStamp'], "info")
-        b.addLog('NameSpace' + request_body['ClientEvent']['Header']['NameSpace'], "info")
-        b.addLog('Text' + request_body['Info']['Text'], "info")
+        # b = Base()
+        # b.addLog('TimeStamp' + request_body['ClientEvent']['Header']['TimeStamp'], "info")
+        # b.addLog('NameSpace' + request_body['ClientEvent']['Header']['NameSpace'], "info")
+        # b.addLog('Text' + request_body['Info']['Text'], "info")
 
         x = XiaolanNlu()
 

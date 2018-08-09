@@ -55,7 +55,7 @@ class XiaolanNlp(Base):
                           data = body,
                           headers = {'Content-Type': '	application/json'})
 
-        json = r.json()
+        result = r.json()
 
         trunlist = []
 
@@ -63,11 +63,11 @@ class XiaolanNlp(Base):
         while 1 == 1:
             word = []
             try:
-                word.append(json['items'][len(json['itmes']) - a]['item'])
-                if json['items'][len(json['itmes']) - a]['pos'] != None or json['items'][len(json['itmes']) - a]['pos'] != "":
-                    word.append(json['items'][len(json['itmes']) - a]['pos'])
+                word.append(result['items'][len(result['itmes']) - a]['item'])
+                if result['items'][len(result['itmes']) - a]['pos'] != None or result['items'][len(result['itmes']) - a]['pos'] != "":
+                    word.append(result['items'][len(result['itmes']) - a]['pos'])
                 else:
-                    word.append(json['items'][len(json['itmes']) - a]['ne'])
+                    word.append(result['items'][len(result['itmes']) - a]['ne'])
                 trunlist.append(word)
             except:
                 break
@@ -95,9 +95,9 @@ class XiaolanNlp(Base):
                           data = body,
                           headers = {'Content-Type':	'application/json'})
 
-        json = r.json()
+        result = r.json()
 
-        if json['score'] > 0.5:
+        if result['score'] > 0.5:
             return True
         else:
             return False
@@ -122,9 +122,9 @@ class XiaolanNlp(Base):
                           headers = {'Content-Type': 'application/json'})
 
 
-        json = r.json()
+        result = r.json()
 
-        if json['score'] > 0.5:
+        if result['score'] > 0.5:
             return True
         else:
             return False
@@ -144,10 +144,10 @@ class XiaolanNlp(Base):
         }
 
         r = requests.post(url,
-                          data = body,
-                          headers = {'Content-Type': 'application/json'})
+                          data=body,
+                          headers={'Content-Type': 'application/json'})
 
-        json = r.json()
+        result = r.json()
 
         trunlist = []
 
@@ -155,9 +155,9 @@ class XiaolanNlp(Base):
         while 1 == 1:
             word = []
             try:
-                word.append(json['items'][len(json['itmes']) - a]['item'])
-                word.append(json['items'][len(json['itmes']) - a]['postag'])
-                word.append(json['items'][len(json['itmes']) - a]['deprel'])
+                word.append(result['items'][len(result['itmes']) - a]['item'])
+                word.append(result['items'][len(result['itmes']) - a]['postag'])
+                word.append(result['items'][len(result['itmes']) - a]['deprel'])
                 trunlist.append(word)
             except:
                 break
@@ -185,7 +185,7 @@ class XiaolanNlp(Base):
 
         result = r.json()
         print(result)
-        if json['item']['score'] > 0.5:
+        if result['item']['score'] > 0.5:
             return result['item']['correct_query']
         else:
             return text
